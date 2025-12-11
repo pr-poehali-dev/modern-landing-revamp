@@ -111,7 +111,7 @@ export default function MojiAI() {
           {[...Array(30)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-1 h-1 bg-white rounded-full animate-sparkle"
+              className="absolute w-2 h-2 bg-white rounded-full animate-sparkle shadow-[0_0_8px_rgba(255,255,255,0.8)]"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
