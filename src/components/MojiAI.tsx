@@ -7,22 +7,22 @@ const backgroundPatterns = [
   {
     name: 'Паттерн 1',
     gradient: 'from-purple-600 via-pink-600 to-orange-500',
-    image: '/patterns/pattern1.jpeg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/0bed4afa-f068-4e17-a7d9-a5ac4bafc225.jpg'
   },
   {
     name: 'Паттерн 2',
     gradient: 'from-blue-600 via-cyan-500 to-green-500',
-    image: '/patterns/pattern2.jpeg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/d52405a7-0843-4ef0-95ba-dc06fcd4685c.jpg'
   },
   {
     name: 'Паттерн 3',
     gradient: 'from-pink-600 via-purple-600 to-indigo-600',
-    image: '/patterns/pattern3.jpeg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/e70cc14b-bc70-4c36-8d54-bbfb18256ed8.jpg'
   },
   {
     name: 'Паттерн 4',
     gradient: 'from-orange-600 via-red-600 to-pink-600',
-    image: '/patterns/pattern4.jpeg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/dc837c8c-c9e8-40a8-af22-20b41372dec1.jpg'
   },
 ];
 
