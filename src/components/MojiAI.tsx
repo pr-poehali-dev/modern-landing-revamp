@@ -99,24 +99,24 @@ export default function MojiAI() {
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
               <Icon name="Palette" size={24} />
             </div>
-            <h3 className="text-lg font-bold mb-2">Любой стиль</h3>
-            <p className="text-sm text-gray-300">Реализм, абстракция, минимализм — что угодно</p>
+            <h3 className="text-lg font-bold mb-2 text-white">Любой стиль</h3>
+            <p className="text-sm text-white/80">Реализм, абстракция, минимализм — что угодно</p>
           </Card>
 
           <Card className="bg-white/5 backdrop-blur-md border-white/10 p-6 text-center hover:bg-white/10 transition-all duration-300">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
               <Icon name="Zap" size={24} />
             </div>
-            <h3 className="text-lg font-bold mb-2">За секунды</h3>
-            <p className="text-sm text-gray-300">Нейросеть создаёт фон за 5-10 секунд</p>
+            <h3 className="text-lg font-bold mb-2 text-white">За секунды</h3>
+            <p className="text-sm text-white/80">Нейросеть создаёт фон за 5-10 секунд</p>
           </Card>
 
           <Card className="bg-white/5 backdrop-blur-md border-white/10 p-6 text-center hover:bg-white/10 transition-all duration-300">
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mx-auto mb-4">
               <Icon name="Infinity" size={24} />
             </div>
-            <h3 className="text-lg font-bold mb-2">Безлимит</h3>
-            <p className="text-sm text-gray-300">Генерируй сколько хочешь на Pro</p>
+            <h3 className="text-lg font-bold mb-2 text-white">Безлимит</h3>
+            <p className="text-sm text-white/80">Генерируй сколько хочешь на Pro</p>
           </Card>
         </div>
       </div>
