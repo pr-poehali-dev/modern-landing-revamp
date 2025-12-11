@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import WhatIsMoji from '@/components/WhatIsMoji';
 import Benefits from '@/components/Benefits';
 import HowItWorks from '@/components/HowItWorks';
+import EmojiAddress from '@/components/EmojiAddress';
 import MojiAI from '@/components/MojiAI';
 import FinalCTA from '@/components/FinalCTA';
 
@@ -32,6 +33,7 @@ const Index = () => {
       <WhatIsMoji />
       <Benefits />
       <HowItWorks />
+      <EmojiAddress />
       <MojiAI />
       <FinalCTA />
     </div>
