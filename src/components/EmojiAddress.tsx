@@ -6,18 +6,24 @@ const EMOJI_SET = ['😂','😇','😍','😊','😘','😭','😈','😎','😱
 
 const SlotMachineEmoji = () => {
   const [emojis, setEmojis] = useState<string[]>([]);
+  const [animatingIndex, setAnimatingIndex] = useState<number>(-1);
 
   const getRandomEmoji = () => EMOJI_SET[Math.floor(Math.random() * EMOJI_SET.length)];
 
   const spinSlots = () => {
-    const newEmojis = [...emojis];
-    
     // Меняем эмодзи последовательно с задержкой
     for (let i = 0; i < 4; i++) {
       setTimeout(() => {
-        newEmojis[i] = getRandomEmoji();
-        setEmojis([...newEmojis]);
-      }, i * 200); // Задержка 200мс между каждым слотом
+        setAnimatingIndex(i);
+        setTimeout(() => {
+          setEmojis(prev => {
+            const newEmojis = [...prev];
+            newEmojis[i] = getRandomEmoji();
+            return newEmojis;
+          });
+          setAnimatingIndex(-1);
+        }, 150);
+      }, i * 300);
     }
   };
 
@@ -39,8 +45,10 @@ const SlotMachineEmoji = () => {
       <div className="flex gap-1">
         {emojis.map((emoji, index) => (
           <span 
-            key={index} 
-            className="text-2xl transition-all duration-300 ease-in-out"
+            key={`${emoji}-${index}`}
+            className={`text-2xl transition-all duration-300 ease-in-out inline-block ${
+              animatingIndex === index ? 'scale-125 opacity-50' : 'scale-100 opacity-100'
+            }`}
           >
             {emoji}
           </span>
