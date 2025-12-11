@@ -53,7 +53,7 @@ export default function Benefits() {
               <div className="mb-6 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Icon name={benefit.icon} size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-3">{benefit.title}</h3>
+              <h3 className="text-2xl font-bold mb-3 text-white">{benefit.title}</h3>
               <p className="text-gray-400 leading-relaxed">{benefit.description}</p>
             </Card>
           ))}
