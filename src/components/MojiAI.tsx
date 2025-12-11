@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
@@ -31,14 +31,53 @@ const backgroundPatterns = [
 
 export default function MojiAI() {
   const [currentPattern, setCurrentPattern] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(true);
+  const [showCursor, setShowCursor] = useState(true);
 
-  const nextPattern = () => {
-    setCurrentPattern((prev) => (prev + 1) % backgroundPatterns.length);
-  };
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
 
-  const prevPattern = () => {
-    setCurrentPattern((prev) => (prev - 1 + backgroundPatterns.length) % backgroundPatterns.length);
-  };
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  useEffect(() => {
+    const currentPrompt = backgroundPatterns[currentPattern].prompt;
+    let currentIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 50;
+
+    const typeText = () => {
+      if (!isDeleting) {
+        if (currentIndex < currentPrompt.length) {
+          setDisplayedText(currentPrompt.substring(0, currentIndex + 1));
+          currentIndex++;
+          setTimeout(typeText, typingSpeed);
+        } else {
+          setIsTyping(false);
+          setTimeout(() => {
+            isDeleting = true;
+            setIsTyping(true);
+            typeText();
+          }, 5000);
+        }
+      } else {
+        if (currentIndex > 0) {
+          setDisplayedText(currentPrompt.substring(0, currentIndex - 1));
+          currentIndex--;
+          setTimeout(typeText, 30);
+        } else {
+          setCurrentPattern((prev) => (prev + 1) % backgroundPatterns.length);
+          isDeleting = false;
+          setIsTyping(true);
+        }
+      }
+    };
+
+    typeText();
+  }, [currentPattern]);
 
   return (
     <section className="py-20 px-4 relative overflow-hidden scroll-animate">
@@ -75,27 +114,14 @@ export default function MojiAI() {
                 <Icon name="MessageSquare" size={20} className="text-purple-300 flex-shrink-0 mt-1" />
                 <div className="flex-1">
                   <p className="text-xs text-gray-400 mb-1 font-semibold">Пример промпта:</p>
-                  <p className="text-sm text-gray-200">{backgroundPatterns[currentPattern].prompt}</p>
+                  <p className="text-sm text-gray-200 font-mono min-h-[40px]">
+                    {displayedText}
+                    {showCursor && <span className="inline-block w-0.5 h-4 bg-purple-400 ml-0.5 align-middle" />}
+                  </p>
                 </div>
               </div>
             </Card>
           </div>
-        </div>
-
-        <div className="flex justify-center gap-2 mb-16">
-          {backgroundPatterns.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentPattern(index)}
-              className={`px-4 py-2 rounded-lg transition-all duration-300 ${
-                index === currentPattern 
-                  ? 'bg-white text-gray-900 font-semibold' 
-                  : 'bg-white/10 text-white hover:bg-white/20'
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
