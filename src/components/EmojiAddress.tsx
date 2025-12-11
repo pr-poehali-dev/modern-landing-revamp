@@ -19,7 +19,7 @@ const SlotMachineEmoji = () => {
     }
 
     let spinCount = 0;
-    const maxSpins = 20;
+    const maxSpins = 10;
     const spinInterval = setInterval(() => {
       setEmojis([getRandomEmoji(), getRandomEmoji(), getRandomEmoji(), getRandomEmoji()]);
       spinCount++;
@@ -29,7 +29,7 @@ const SlotMachineEmoji = () => {
         setEmojis(finalEmojis);
         setIsSpinning(false);
       }
-    }, 100);
+    }, 150);
   };
 
   useEffect(() => {
