@@ -1,5 +1,63 @@
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+
+const EMOJI_SET = ['😂','😇','😍','😊','😘','😭','😈','😎','😱','🤔','😵','😴','😢','💩','👾','👻','👽','🤖','🎃','😻','🙀','🖖','🙈','🐸','🐙','🌝','🌚','🔥','🍏','🍎','🎱','🎹','🎁','🎈','🎉','🔞'];
+
+const SlotMachineEmoji = () => {
+  const [emojis, setEmojis] = useState<string[]>([]);
+  const [isSpinning, setIsSpinning] = useState(false);
+
+  const getRandomEmoji = () => EMOJI_SET[Math.floor(Math.random() * EMOJI_SET.length)];
+
+  const spinSlots = () => {
+    setIsSpinning(true);
+    
+    const finalEmojis: string[] = [];
+    for (let i = 0; i < 4; i++) {
+      finalEmojis.push(getRandomEmoji());
+    }
+
+    let spinCount = 0;
+    const maxSpins = 20;
+    const spinInterval = setInterval(() => {
+      setEmojis([getRandomEmoji(), getRandomEmoji(), getRandomEmoji(), getRandomEmoji()]);
+      spinCount++;
+
+      if (spinCount >= maxSpins) {
+        clearInterval(spinInterval);
+        setEmojis(finalEmojis);
+        setIsSpinning(false);
+      }
+    }, 100);
+  };
+
+  useEffect(() => {
+    setEmojis([getRandomEmoji(), getRandomEmoji(), getRandomEmoji(), getRandomEmoji()]);
+    
+    const autoSpin = setInterval(() => {
+      spinSlots();
+    }, 5000);
+
+    return () => clearInterval(autoSpin);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-sm text-gray-400 font-mono">moji.vc/</span>
+      <div className="flex gap-1">
+        {emojis.map((emoji, index) => (
+          <span 
+            key={index} 
+            className={`text-2xl transition-all duration-100 ${isSpinning ? 'animate-pulse scale-110' : ''}`}
+          >
+            {emoji}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default function EmojiAddress() {
   return (
@@ -32,7 +90,7 @@ export default function EmojiAddress() {
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                   <Icon name="Sparkles" size={24} />
                 </div>
-                <div className="text-2xl">moji.vc/💩😂🐸🤖</div>
+                <SlotMachineEmoji />
               </div>
               <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
                 Emoji-адрес
