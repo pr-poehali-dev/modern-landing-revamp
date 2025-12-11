@@ -3,21 +3,21 @@ import Icon from '@/components/ui/icon';
 const steps = [
   {
     number: '1',
-    icon: 'MessageSquare',
-    title: 'Открываешь Moji в Telegram',
-    description: 'Просто запускаешь WebApp прямо из мессенджера',
+    icon: 'Send',
+    title: 'Нажми «Запустить в Telegram»',
+    description: 'Бот тебя приветствует и сразу готов помочь создать страницу. Никаких форм регистрации!',
   },
   {
     number: '2',
-    icon: 'Plus',
-    title: 'Добавляешь блоки и контент',
-    description: 'Текст, изображения, кнопки — всё в пару кликов',
+    icon: 'Smile',
+    title: 'Выбери emoji и укажи ник',
+    description: 'Это будет твой адрес. Слот-машина предложит уникальную комбинацию emoji, или используй свой Telegram-ник.',
   },
   {
     number: '3',
-    icon: 'Send',
-    title: 'Получаешь ссылку',
-    description: 'Отправляешь её клиентам и начинаешь продавать',
+    icon: 'Sparkles',
+    title: 'Настраивай блоки и делись',
+    description: 'Добавляй ссылки, фото, видео, AI-фоны. Перетаскивай блоки, настраивай и сразу делись с друзьями!',
   },
 ];
 
@@ -31,6 +31,9 @@ export default function HowItWorks() {
           <h2 className="text-4xl md:text-6xl font-black mb-6">
             Как это <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">работает</span>?
           </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Три простых шага до твоей персональной страницы
+          </p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8 relative">
