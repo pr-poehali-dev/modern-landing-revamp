@@ -155,4 +155,23 @@
     background-size: 200% 200%;
     animation: gradient-shift 2s ease-in-out infinite;
   }
+
+  @keyframes sparkle {
+    0% {
+      opacity: 0;
+      transform: scale(0) translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.5) translateY(-20px);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0) translateY(-40px);
+    }
+  }
+
+  .animate-sparkle {
+    animation: sparkle 2s ease-in-out infinite;
+  }
 }

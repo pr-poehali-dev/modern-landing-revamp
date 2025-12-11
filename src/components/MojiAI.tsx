@@ -106,6 +106,23 @@ export default function MojiAI() {
         className={`absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 transition-opacity duration-700 ${isGenerating ? 'opacity-100 animate-gradient-shift' : 'opacity-0'}`}
       />
       
+      {isGenerating && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(30)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-sparkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${1 + Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      )}
+      
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       
       <div className="container mx-auto max-w-6xl relative z-10">
@@ -130,10 +147,10 @@ export default function MojiAI() {
               <div className="flex items-start gap-3">
                 <Icon name="MessageSquare" size={20} className="text-purple-300 flex-shrink-0 mt-1" />
                 <div className="flex-1">
-                  <p className="text-xs text-gray-400 mb-1 font-semibold">Пример промпта:</p>
-                  <p className="text-sm text-gray-200 font-mono min-h-[40px]">
+                  <p className="text-xs text-gray-400 mb-2 font-semibold">Пример промпта:</p>
+                  <p className="text-base text-gray-200 font-mono min-h-[48px]">
                     {displayedText}
-                    {showCursor && <span className="inline-block w-0.5 h-4 bg-purple-400 ml-0.5 align-middle" />}
+                    {showCursor && <span className="inline-block w-0.5 h-5 bg-purple-400 ml-0.5 align-middle" />}
                   </p>
                 </div>
               </div>
