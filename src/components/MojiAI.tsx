@@ -34,6 +34,7 @@ export default function MojiAI() {
   const [nextPattern, setNextPattern] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
     const currentPrompt = backgroundPatterns[nextPattern].prompt;
@@ -55,9 +56,11 @@ export default function MojiAI() {
         } else {
           if (cursorInterval) clearInterval(cursorInterval);
           setShowCursor(false);
+          setIsGenerating(true);
           
           setTimeout(() => {
             setCurrentPattern(nextPattern);
+            setIsGenerating(false);
             
             setTimeout(() => {
               isDeleting = true;
@@ -67,7 +70,7 @@ export default function MojiAI() {
               }, 500);
               typeText();
             }, 5000);
-          }, 300);
+          }, 2000);
         }
       } else {
         if (currentIndex > 0) {
@@ -91,13 +94,18 @@ export default function MojiAI() {
   return (
     <section className="py-20 px-4 relative overflow-hidden scroll-animate">
       <div 
-        className="absolute inset-0 transition-all duration-700"
+        className={`absolute inset-0 transition-opacity duration-700 ${isGenerating ? 'opacity-0' : 'opacity-100'}`}
         style={{
           backgroundImage: `url(${backgroundPatterns[currentPattern].image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       />
+      
+      <div 
+        className={`absolute inset-0 bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-600 transition-opacity duration-700 ${isGenerating ? 'opacity-100 animate-gradient-shift' : 'opacity-0'}`}
+      />
+      
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
       
       <div className="container mx-auto max-w-6xl relative z-10">

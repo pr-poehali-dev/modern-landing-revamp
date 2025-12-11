@@ -129,4 +129,30 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+      filter: hue-rotate(0deg) brightness(1);
+    }
+    25% {
+      filter: hue-rotate(30deg) brightness(1.2);
+    }
+    50% {
+      background-position: 100% 50%;
+      filter: hue-rotate(60deg) brightness(1);
+    }
+    75% {
+      filter: hue-rotate(30deg) brightness(1.2);
+    }
+    100% {
+      background-position: 0% 50%;
+      filter: hue-rotate(0deg) brightness(1);
+    }
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 2s ease-in-out infinite;
+  }
 }
