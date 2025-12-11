@@ -2,12 +2,9 @@ import Icon from '@/components/ui/icon';
 import { Card } from '@/components/ui/card';
 
 const features = [
-  { icon: 'Zap', text: 'Создание страницы — 1 минута' },
-  { icon: 'MessageSquare', text: 'Всё внутри Telegram' },
-  { icon: 'Shield', text: 'Хранение данных в РФ' },
-  { icon: 'BarChart3', text: 'Аналитика через Яндекс.Метрику' },
-  { icon: 'User', text: 'Привязка Telegram профиля' },
-  { icon: 'AlertCircle', text: 'Модерация по жалобам' },
+  { icon: 'Zap', text: 'Создание страницы за 3 минуты' },
+  { icon: 'Smile', text: 'Уникальный адрес с emoji' },
+  { icon: 'UserCheck', text: 'Без регистрации' },
 ];
 
 export default function WhatIsMoji() {
@@ -20,9 +17,10 @@ export default function WhatIsMoji() {
           <h2 className="text-4xl md:text-6xl font-black mb-6">
             Что такое <span className="bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">Moji</span>?
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Moji — это Telegram WebApp, который позволяет создать персональный мини-лендинг в пару кликов.
-            Пользователь получает страницу со своим контентом, ссылкой, аналитикой и возможностью быстро делиться.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Moji — это простой конструктор микролендингов, который работает прямо в Telegram и не требует регистрации и знания программирования.
+            <br /><br />
+            Создай страницу с ссылками на свои соцсети, добавь баннеры, видео и текстовые блоки всего за пару минут.
           </p>
         </div>
         
