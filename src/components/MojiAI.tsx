@@ -31,23 +31,20 @@ const backgroundPatterns = [
 
 export default function MojiAI() {
   const [currentPattern, setCurrentPattern] = useState(0);
+  const [nextPattern, setNextPattern] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 500);
-
-    return () => clearInterval(cursorInterval);
-  }, []);
-
-  useEffect(() => {
-    const currentPrompt = backgroundPatterns[currentPattern].prompt;
+    const currentPrompt = backgroundPatterns[nextPattern].prompt;
     let currentIndex = 0;
     let isDeleting = false;
     const typingSpeed = 50;
+    let cursorInterval: NodeJS.Timeout | null = null;
+
+    cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
 
     const typeText = () => {
       if (!isDeleting) {
@@ -56,12 +53,21 @@ export default function MojiAI() {
           currentIndex++;
           setTimeout(typeText, typingSpeed);
         } else {
-          setIsTyping(false);
+          if (cursorInterval) clearInterval(cursorInterval);
+          setShowCursor(false);
+          
           setTimeout(() => {
-            isDeleting = true;
-            setIsTyping(true);
-            typeText();
-          }, 5000);
+            setCurrentPattern(nextPattern);
+            
+            setTimeout(() => {
+              isDeleting = true;
+              if (cursorInterval) clearInterval(cursorInterval);
+              cursorInterval = setInterval(() => {
+                setShowCursor((prev) => !prev);
+              }, 500);
+              typeText();
+            }, 5000);
+          }, 300);
         }
       } else {
         if (currentIndex > 0) {
@@ -69,15 +75,18 @@ export default function MojiAI() {
           currentIndex--;
           setTimeout(typeText, 30);
         } else {
-          setCurrentPattern((prev) => (prev + 1) % backgroundPatterns.length);
+          setNextPattern((prev) => (prev + 1) % backgroundPatterns.length);
           isDeleting = false;
-          setIsTyping(true);
         }
       }
     };
 
     typeText();
-  }, [currentPattern]);
+
+    return () => {
+      if (cursorInterval) clearInterval(cursorInterval);
+    };
+  }, [nextPattern]);
 
   return (
     <section className="py-20 px-4 relative overflow-hidden scroll-animate">
