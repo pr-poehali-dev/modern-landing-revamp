@@ -6,22 +6,26 @@ const backgroundPatterns = [
   {
     name: 'Паттерн 1',
     gradient: 'from-purple-600 via-pink-600 to-orange-500',
-    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/0bed4afa-f068-4e17-a7d9-a5ac4bafc225.jpg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/0bed4afa-f068-4e17-a7d9-a5ac4bafc225.jpg',
+    prompt: 'Космический закат с плавными фиолетовыми и оранжевыми переходами'
   },
   {
     name: 'Паттерн 2',
     gradient: 'from-blue-600 via-cyan-500 to-green-500',
-    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/d52405a7-0843-4ef0-95ba-dc06fcd4685c.jpg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/d52405a7-0843-4ef0-95ba-dc06fcd4685c.jpg',
+    prompt: 'Абстрактные геометрические фигуры в сине-зеленых тонах'
   },
   {
     name: 'Паттерн 3',
     gradient: 'from-pink-600 via-purple-600 to-indigo-600',
-    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/e70cc14b-bc70-4c36-8d54-bbfb18256ed8.jpg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/e70cc14b-bc70-4c36-8d54-bbfb18256ed8.jpg',
+    prompt: 'Мягкие облака в розово-фиолетовых тонах, dreamy aesthetic'
   },
   {
     name: 'Паттерн 4',
     gradient: 'from-orange-600 via-red-600 to-pink-600',
-    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/dc837c8c-c9e8-40a8-af22-20b41372dec1.jpg'
+    image: 'https://cdn.poehali.dev/projects/51246eb4-219e-4f21-843b-1984ff5c8192/files/dc837c8c-c9e8-40a8-af22-20b41372dec1.jpg',
+    prompt: 'Энергичные волны огненных оттенков с яркими переходами'
   },
 ];
 
@@ -61,37 +65,37 @@ export default function MojiAI() {
             </span>
             {' '}— твой дизайнер
           </h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto mb-8">
             Сгенерируй уникальный фон для своей страницы с помощью ИИ по любому запросу, даже самому невероятному
           </p>
+          
+          <div className="max-w-2xl mx-auto">
+            <Card className="bg-white/5 backdrop-blur-md border-white/10 p-4">
+              <div className="flex items-start gap-3">
+                <Icon name="MessageSquare" size={20} className="text-purple-300 flex-shrink-0 mt-1" />
+                <div className="flex-1">
+                  <p className="text-xs text-gray-400 mb-1 font-semibold">Пример промпта:</p>
+                  <p className="text-sm text-gray-200">{backgroundPatterns[currentPattern].prompt}</p>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 mb-16">
-          <button
-            onClick={prevPattern}
-            className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
-          >
-            <Icon name="ChevronLeft" size={28} className="text-white" />
-          </button>
-
-          <div className="flex gap-3">
-            {backgroundPatterns.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentPattern(index)}
-                className={`h-3 rounded-full transition-all duration-300 ${
-                  index === currentPattern ? 'bg-white w-12' : 'bg-white/40 w-3 hover:bg-white/60'
-                }`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={nextPattern}
-            className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110"
-          >
-            <Icon name="ChevronRight" size={28} className="text-white" />
-          </button>
+        <div className="flex justify-center gap-2 mb-16">
+          {backgroundPatterns.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentPattern(index)}
+              className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                index === currentPattern 
+                  ? 'bg-white text-gray-900 font-semibold' 
+                  : 'bg-white/10 text-white hover:bg-white/20'
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
