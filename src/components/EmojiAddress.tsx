@@ -6,35 +6,26 @@ const EMOJI_SET = ['😂','😇','😍','😊','😘','😭','😈','😎','😱
 
 const SlotMachineEmoji = () => {
   const [emojis, setEmojis] = useState<string[]>([]);
-  const [isSpinning, setIsSpinning] = useState(false);
 
   const getRandomEmoji = () => EMOJI_SET[Math.floor(Math.random() * EMOJI_SET.length)];
 
   const spinSlots = () => {
-    setIsSpinning(true);
+    const newEmojis = [...emojis];
     
-    const finalEmojis: string[] = [];
+    // Меняем эмодзи последовательно с задержкой
     for (let i = 0; i < 4; i++) {
-      finalEmojis.push(getRandomEmoji());
+      setTimeout(() => {
+        newEmojis[i] = getRandomEmoji();
+        setEmojis([...newEmojis]);
+      }, i * 200); // Задержка 200мс между каждым слотом
     }
-
-    let spinCount = 0;
-    const maxSpins = 10;
-    const spinInterval = setInterval(() => {
-      setEmojis([getRandomEmoji(), getRandomEmoji(), getRandomEmoji(), getRandomEmoji()]);
-      spinCount++;
-
-      if (spinCount >= maxSpins) {
-        clearInterval(spinInterval);
-        setEmojis(finalEmojis);
-        setIsSpinning(false);
-      }
-    }, 150);
   };
 
   useEffect(() => {
+    // Инициализируем начальные эмодзи
     setEmojis([getRandomEmoji(), getRandomEmoji(), getRandomEmoji(), getRandomEmoji()]);
     
+    // Автоматическая смена каждые 5 секунд
     const autoSpin = setInterval(() => {
       spinSlots();
     }, 5000);
@@ -49,7 +40,7 @@ const SlotMachineEmoji = () => {
         {emojis.map((emoji, index) => (
           <span 
             key={index} 
-            className={`text-2xl transition-all duration-100 ${isSpinning ? 'animate-pulse scale-110' : ''}`}
+            className="text-2xl transition-all duration-300 ease-in-out"
           >
             {emoji}
           </span>
