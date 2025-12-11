@@ -60,6 +60,7 @@ export default function Pricing() {
             <Button 
               size="lg" 
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg py-6 rounded-xl shadow-xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('https://t.me/GetMojiBot', '_blank')}
             >
               <Icon name="Crown" className="mr-2" size={24} />
               Подключить Pro

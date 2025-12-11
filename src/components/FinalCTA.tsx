@@ -24,6 +24,7 @@ export default function FinalCTA() {
         <Button 
           size="lg" 
           className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-xl px-12 py-8 rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110"
+          onClick={() => window.open('https://t.me/GetMojiBot', '_blank')}
         >
           <Icon name="Send" className="mr-3" size={28} />
           Открыть в Telegram

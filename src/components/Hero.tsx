@@ -27,6 +27,7 @@ export default function Hero() {
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold text-lg px-8 py-6 rounded-full shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+              onClick={() => window.open('https://t.me/GetMojiBot', '_blank')}
             >
               <Icon name="Send" className="mr-2" size={24} />
               Открыть в Telegram
@@ -55,7 +56,10 @@ export default function Hero() {
                   <div className="h-4 bg-gray-700 rounded-full w-1/2" />
                 </div>
                 
-                <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600">
+                <Button 
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600"
+                  onClick={() => window.open('https://t.me/GetMojiBot', '_blank')}
+                >
                   Связаться
                 </Button>
               </div>
