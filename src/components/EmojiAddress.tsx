@@ -70,8 +70,8 @@ export default function EmojiAddress() {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
-          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-purple-500/20 p-8 hover:border-purple-500/40 transition-all duration-300">
+        <div className="flex flex-col md:flex-row gap-6 items-stretch mb-12 max-w-4xl mx-auto">
+          <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-purple-500/20 p-8 hover:border-purple-500/40 transition-all duration-300 flex-1">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center">
                 <Icon name="Link" size={24} />
@@ -82,7 +82,7 @@ export default function EmojiAddress() {
             <p className="text-gray-400">Классическая ссылка с твоим ником для деловых контактов</p>
           </Card>
 
-          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-500/40 p-8 hover:border-purple-500/60 transition-all duration-300 hover:scale-105 relative overflow-hidden">
+          <Card className="bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-purple-500/40 p-8 hover:border-purple-500/60 transition-all duration-300 hover:scale-105 relative overflow-hidden flex-1">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10" />
             <div className="relative">
               <div className="flex items-center gap-3 mb-6">
@@ -100,53 +100,39 @@ export default function EmojiAddress() {
           </Card>
         </div>
 
-        <Card className="bg-gradient-to-br from-gray-900 to-gray-800 border-purple-500/20 p-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Gift" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">Бесплатный рандом</h4>
-                  <p className="text-sm text-gray-400">При создании страницы получи случайную комбинацию из 4 эмодзи — совершенно бесплатно</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Shuffle" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">Меняй сколько хочешь</h4>
-                  <p className="text-sm text-gray-400">Не понравился? Крути слот-машину заново и получай новый emoji-адрес</p>
-                </div>
-              </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mb-4">
+              <Icon name="Gift" size={24} />
             </div>
-
-            <div className="space-y-4">
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Crown" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">Купи красивый</h4>
-                  <p className="text-sm text-gray-400">Хочешь крутую комбинацию типа 🔥🔥🔥🔥 или 💎💰🚀⭐? Выбери и приобрети премиум-адрес</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center flex-shrink-0">
-                  <Icon name="Star" size={20} />
-                </div>
-                <div>
-                  <h4 className="font-bold text-white mb-1">Будь уникальным</h4>
-                  <p className="text-sm text-gray-400">Emoji-адреса запоминаются лучше и выделяют твою страницу среди сотен других</p>
-                </div>
-              </div>
-            </div>
+            <h4 className="font-bold text-white mb-2">Бесплатный рандом</h4>
+            <p className="text-sm text-gray-400">При создании страницы получи случайную комбинацию из 4 эмодзи — совершенно бесплатно</p>
           </div>
-        </Card>
+
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center mb-4">
+              <Icon name="Shuffle" size={24} />
+            </div>
+            <h4 className="font-bold text-white mb-2">Меняй сколько хочешь</h4>
+            <p className="text-sm text-gray-400">Не понравился? Крути слот-машину заново и получай новый emoji-адрес</p>
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mb-4">
+              <Icon name="Crown" size={24} />
+            </div>
+            <h4 className="font-bold text-white mb-2">Купи красивый</h4>
+            <p className="text-sm text-gray-400">Хочешь крутую комбинацию типа 🔥🔥🔥🔥 или 💎💰🚀⭐? Выбери и приобрети премиум-адрес</p>
+          </div>
+
+          <div className="flex flex-col items-center text-center">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-4">
+              <Icon name="Star" size={24} />
+            </div>
+            <h4 className="font-bold text-white mb-2">Будь уникальным</h4>
+            <p className="text-sm text-gray-400">Emoji-адреса запоминаются лучше и выделяют твою страницу среди сотен других</p>
+          </div>
+        </div>
 
         <div className="mt-8 text-center">
           <div className="inline-flex items-center gap-2 bg-purple-900/20 border border-purple-500/30 rounded-full px-6 py-3">
