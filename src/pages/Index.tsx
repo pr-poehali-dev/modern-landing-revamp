@@ -4,7 +4,6 @@ import WhatIsMoji from '@/components/WhatIsMoji';
 import Benefits from '@/components/Benefits';
 import HowItWorks from '@/components/HowItWorks';
 import MojiAI from '@/components/MojiAI';
-import Pricing from '@/components/Pricing';
 import FinalCTA from '@/components/FinalCTA';
 
 const Index = () => {
@@ -34,7 +33,6 @@ const Index = () => {
       <Benefits />
       <HowItWorks />
       <MojiAI />
-      <Pricing />
       <FinalCTA />
     </div>
   );
